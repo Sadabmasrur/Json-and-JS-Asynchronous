@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Functioning Asynchronous results with Async & Await with JS</h2>
+    <h1 id="result"></h1>
+
+    <script>
+      async function fetchData() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(10);
+          }, 2000);
+        });
+      }
+
+      async function processResult() {
+        try {
+          const data = await fetchData();
+          const result = data * 2;
+          displayResult(result);
+        } catch (error) {
+          displayResult("An error occurred: " + error);
+        }
+      }
+
+      function displayResult(value) {
+        document.getElementById("result").innerHTML = value;
+      }
+
+      processResult();
+    </script>
+  </body>
+</html>
